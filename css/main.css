@@ -1,0 +1,314 @@
+/* Style file for index.html 
+==============================
+00 CSS Variables
+01 Color
+02 Typographic
+03 Layout
+*/
+
+/* 00 CSS Variables */
+:root{
+    /* Name of the variable */
+    --page-color: hsla(57, 35%, 50%, 0.9);
+    --body-color: hsla(45, 27%, 89%, 0.9);
+    --sidebar-color: hsla(48, 20%, 40%, 0.9);
+    --footbar-color:hsla(43, 96%, 49%, 1);
+    --tab-color: hsla(342, 77%, 39%, 1); 
+    --footbar-height: 15vh;
+    --page-position: 84%;
+    --page-width: 30%;
+    --tab-gap: 2vw;
+    --tab-width: 10vw;
+    --tab-height: 10vh;
+}
+
+/* 01 Color */
+/* Overall page background color with padding */
+html{
+    background-color: hsla(145, 35%, 89%, 0.9);
+    padding: 5%;
+}
+
+/* Color of body */
+body{
+    background-color: var(--body-color);
+    padding: 10px;
+}
+
+/* Color of sidebar */
+aside.sidebar{
+    background-color: var(--sidebar-color);
+}
+
+/* Color of Introduction block */
+#zen-intro{
+    background-color: var(--page-color);
+}
+
+/* Color of supporting block */
+#zen-supporting {
+    background-color: var(--page-color);
+}
+
+/* 02 Typographic */
+@font-face {
+    font-family: 'myfont';
+    src: url(../fonts/chunkfive.woff);
+}
+
+/* Font for Title */
+header h1{
+    font-family: 'myfont', sans-serif;
+    font-weight: 400;
+    font-size: 1.25em;
+    letter-spacing: 1px;
+    line-height: 1em;
+}
+
+/* Font for Tabs */
+h3{
+    font-family: 'Rachers', cursive;
+    font-size: .75em;
+    text-align: center;
+}
+
+/* Font for Sub-title */
+h2{
+    font-family: 'Young Serif', serif; 
+}
+
+/* Decor for sidebar */
+a{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/*03 Layout */
+/* Testing */
+div.explanation, div.requirements, div.benefits, div.participation{
+    position: fixed;
+    top: var(--page-position);
+    width: var(--page-width);
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid;
+    background-image: url(../img/newspaper3.jpg);
+    height: 80vh;
+    transition: all 4s ease-in-out;
+}
+
+div.explanation{
+    left: 0%;
+}
+
+div.requirements{
+    left: 12vw;
+}
+
+div.benefits{
+    left: 24vw;
+}
+
+div.participation{
+    left: 36vw;
+}
+
+div.explanation h3, div.requirements h3, div.benefits h3, div.participation h3{
+    margin-top: -15%;
+    width: var(--tab-width);
+    height: var(--tab-height);
+    background-color: var(--tab-color);
+    border-radius: 35px 35px 0 0;
+    transition: background-color 2s ease-in-out;
+}
+
+aside.sidebar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 60%;
+}
+
+div.extra2{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footbar-height);
+    background-color: var(--footbar-color);
+    z-index: 1;
+}
+
+/* footer -- try it outside of class */
+footer{
+    position: fixed;
+    top: 97%;
+    right: 40%;
+    border: 1px solid;
+    z-index: 2;
+}
+
+/* Introduction -in the middle*/
+section.intro{
+    position: fixed;
+    top: 0%;
+    left: 30%;
+    bottom: 5%;
+    width: 30%;
+    height: 80%;
+    padding: 2%;
+    transform: rotate(-15deg) translate(-200px,0);
+}
+
+div.extra1{
+   z-index: -1;
+   position: fixed;
+   top: 0%;
+   left: 30%;
+   bottom: 5%;
+   width: 30%;
+   height: 80%;
+   padding: 2%;
+   background-image: url(../img/newspaper3.jpg);
+   transform: rotate(20deg) translate(100px, 0);
+}
+
+/* 04 Other Decorations*/
+/* While active, changes the appearance of a link while it is being activated  or clicked */
+div.explanation:active{
+    top: 15vh;
+}
+
+div.requirements:active{
+    top: 15vh;
+}
+
+div.benefits:active{
+    top: 15vh;
+}
+
+div.participation:active{
+    top: 15vh;
+}
+
+/* While hovering, font enlarges and indents */
+a:hover{
+    font-size: 1.2em;
+    text-indent: -100px;
+}
+
+/* Changes the decor of 1st letter */
+p::first-letter{
+    font-size: 2em;
+    font-style: italic;
+}
+
+div.explanation h3:hover{
+    background-color: var(--footbar-color);
+}
+
+/* For every 2nd paragraph, changes background color*/
+p:nth-child(2n){
+    background-color: hsla(287, 86%, 48%, 0.445);
+}
+
+/* 05 More practice on transition */
+section.intro h3 ~p{
+    opacity: 1;
+    transition: all 3s ease-in-out;
+}
+
+section.intro h3:hover ~p{
+    opacity: 0;
+    transform: rotate(40deg) scale(0.2);
+}
+
+/* 06 Animations */
+footer{
+    animation: 10s ease-in-out 2s alternate infinite moveback;
+}
+@keyframes moveback{
+    from{transform: translate(-500px,0);}
+    30%{transform: translate(-300px,0);}
+    50%{transform: translate(0,0);}
+    70%{transform: translate(300px,0);}
+    90%{transform: translate(500px,0);}
+}
+
+h2{
+    background-image: linear-gradient(red, pink,blue);
+    animation: 4s infinite running changecolor;
+}
+@keyframes changecolor{
+    from{background-image: linear-gradient(red, blue, pink);}
+    50%{background-image: linear-gradient( pink, red, blue);}
+    70%{background-image: linear-gradient( blue, pink, red);}
+    90%{background-image: linear-gradient( red, blue, pink);}
+}
+
+/* 07 Fancy Features */
+div.extra1{
+    border-image: linear-gradient(orange, cyan) 10 / 15px round;
+}
+
+aside.sidebar{
+    clip-path: polygon(0 0, 0 70%, 50% 100%, 100% 70%, 100% 0);
+}
+
+div#design-archives{
+    display: none;
+}
+
+aside.sidebar h3{
+    display: none;
+}
+
+aside.sidebar ul li{
+    list-style: none;
+}
+
+/* CSS Grid Work in comment */
+/*
+div{
+    background-color:  hsla(200,50%,70%,0.3);
+  }
+  
+  .wrapper {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 100px  repeat(2, 1fr) 100px;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+  
+  .one{
+    grid-column: 2/4;
+    grid-row: 2/4;
+  }
+  
+  .two{
+    grid-column: 1/4;
+    grid-row: 1/1;
+  }
+  
+  .three{
+    grid-column:1;
+    grid-row:2/4;
+  }
+  
+  .four{
+    grid-column:4;
+    grid-row:1/3;
+  }
+  
+  .five{
+    grid-column:1/4;
+    grid-row:4;
+  }
+  
+  .six{
+    grid-column:3/5;
+    grid-row:3/5;
+  }
+  */
